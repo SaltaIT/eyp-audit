@@ -1,3 +1,5 @@
+# == Class: audit::params
+#
 class audit::params {
 
   case $::osfamily
