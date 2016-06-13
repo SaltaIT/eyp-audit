@@ -18,6 +18,13 @@ describe 'apache class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
+    describe file($generalconf) do
+      it { should be_file }
+      its(:content) { should match 'puppet managed file' }
+      its(:content) { should match '-D' }
+      its(:content) { should match '-b 320' }
+    end
+
   end
 
 end
