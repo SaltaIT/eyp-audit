@@ -13,6 +13,8 @@ class audit (
     ensure  => 'running',
     enable  => true,
     require => Package[$audit::params::pkg_audit],
+    restart => $audit::params::service_restart,
+    stop    => $audit::params::service_stop,
   }
 
   concat { $audit::params::audit_file:

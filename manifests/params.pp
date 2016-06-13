@@ -13,10 +13,14 @@ class audit::params {
         /^[5-6].*$/:
         {
           $audit_file='/etc/audit/audit.rules'
+          $service_restart = '/etc/init.d/auditd restart'
+          $service_stop = '/etc/init.d/auditd stop'
         }
         /^7.*$/:
         {
           $audit_file='/etc/audit/rules.d/eyp-audit.rules'
+          $service_restart = '/usr/libexec/initscripts/legacy-actions/auditd/restart'
+          $service_stop = '/usr/libexec/initscripts/legacy-actions/auditd/stop'
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
