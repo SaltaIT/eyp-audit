@@ -22,7 +22,6 @@ describe 'apache class' do
 
     describe file('/etc/audit/audit.rules') do
       it { should be_file }
-      its(:content) { should match 'puppet managed file' }
       its(:content) { should match '-D' }
       its(:content) { should match '-b 320' }
       its(:content) { should match '-w /etc/sudoers -p wa -k scope' }
