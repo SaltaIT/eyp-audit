@@ -124,7 +124,8 @@ class { 'audit::tty': }
 
 #### audit::tty
 
-* **enable**: (default: \*)
+* **disable**: For each user matching one of comma-separated glob patterns, disable TTY auditing (default: \*)
+* **enable**: For each user matching one of comma-separated glob patterns, disable TTY auditing This overrides any previous disable option matching the same user name on the command line.  (default: \*)
 
 ## Limitations
 
