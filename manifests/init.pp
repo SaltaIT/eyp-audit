@@ -16,11 +16,11 @@ class audit (
   }
 
   concat { '/etc/audit/audit.rules':
-    ensure  => 'present',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0640',
-    notify  => Service['auditd'],
+    ensure => 'present',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
+    notify => Service['auditd'],
   }
 
   concat::fragment{ '/etc/audit/audit.rules base':
