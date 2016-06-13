@@ -24,6 +24,9 @@ describe 'apache class' do
       its(:content) { should match 'puppet managed file' }
       its(:content) { should match '-D' }
       its(:content) { should match '-b 320' }
+      its(:content) { should match '#Collect Kernel Module Loading and Unloading' }
+      its(:content) { should match '#Collect Changes to System Administration Scope' }
+      its(:content) { should match '#Collect File Deletion Events by User' }
     end
 
   end
