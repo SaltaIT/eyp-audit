@@ -8,7 +8,8 @@ describe 'apache class' do
     it 'should work with no errors' do
       pp = <<-EOF
 
-      class { 'audit':
+      class { 'audit
+        add_default_rules => true,
       }
 
       EOF
