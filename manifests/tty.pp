@@ -2,8 +2,15 @@
 #
 class audit::tty($disable=undef, $enable=['*']) inherits audit::params {
 
-  validate_array($disable)
-  validate_array($enable)
+  if($disable!=undef)
+  {
+    validate_array($disable)
+  }
+
+  if($enable!=undef)
+  {
+    validate_array($enable)    
+  }
 
   Exec {
     path => '/sbin:/bin:/usr/sbin:/usr/bin',

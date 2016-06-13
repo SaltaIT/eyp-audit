@@ -6,12 +6,17 @@ class audit::params {
   {
     'redhat':
     {
+      $pkg_audit='audit'
+      $sysconfig=true
       case $::operatingsystemrelease
       {
-        /^[5-7].*$/:
+        /^[5-6].*$/:
         {
-          $pkg_audit='audit'
-          $sysconfig=true
+          $audit_file='/etc/audit/audit.rules'
+        }
+        /^7.*$/:
+        {
+          $audit_file='/etc/audit/rules.d/eyp-audit.rules'
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -29,6 +34,7 @@ class audit::params {
             {
               $pkg_audit='auditd'
               $sysconfig=false
+              $audit_file='/etc/audit/audit.rules'
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
