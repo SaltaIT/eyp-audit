@@ -2,7 +2,7 @@
 #
 class audit (
               $buffers='320',
-              $add_default_rules=true
+              $add_default_rules=true,
             ) inherits audit::params {
 
   package { $audit::params::pkg_audit:

@@ -3,77 +3,146 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with audit](#setup)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
     * [What audit affects](#what-audit-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with audit](#beginning-with-audit)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+4. [Usage](#usage)
+5. [Reference](#reference)
+5. [Limitations](#limitations)
+6. [Development](#development)
+    * [Contributing](#contributing)
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+Basic auditd support
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+basic support for auditd
 
 ## Setup
 
 ### What audit affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+manages:
+* audit package
+* audit service
+* /etc/audit/audit.rules
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+This module requires pluginsync enabled
 
 ### Beginning with audit
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+should work out of the box:
+```puppet
+class { 'audit': }
+```
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+Add default rules:
+
+```puppet
+class { 'audit': }
+```
+
+tty audit:
+
+```puppet
+class { 'audit': }
+
+class { 'audit::tty': }
+```
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+### classes
+
+#### audit
+
+* **buffers**: buffers to survive stress events (default: 320)
+* **add_default_rules**: add the following default rules (default: true)
+```
+-w /var/tmp -p x
+-w /tmp -p x
+-w /home -p x
+#Record Events That Modify Date and Time Information
+-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
+-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
+-a always,exit -F arch=b64 -S clock_settime -k time-change
+-a always,exit -F arch=b32 -S clock_settime -k time-change
+-w /etc/localtime -p wa -k time-change
+#Record Events That Modify User/Group Information
+-w /etc/group -p wa -k identity
+-w /etc/passwd -p wa -k identity
+-w /etc/gshadow -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/security/opasswd -p wa -k identity
+#Record Events That Modify the System\'s Network Environment
+-a exit,always -F arch=b64 -S sethostname -S setdomainname -k system-locale
+-a exit,always -F arch=b32 -S sethostname -S setdomainname -k system-locale
+-w /etc/issue -p wa -k system-locale
+-w /etc/issue.net -p wa -k system-locale
+-w /etc/hosts -p wa -k system-locale
+-w /etc/sysconfig/network -p wa -k system-locale
+#Collect Login and Logout Events
+-w /var/log/faillog -p wa -k logins
+-w /var/log/lastlog -p wa -k logins
+-w /var/log/btmp -p wa -k session
+#Collect Session Initiation Information
+-w /var/run/utmp -p wa -k session
+-w /var/log/wtmp -p wa -k session
+#Collect Discretionary Access Control Permission Modification Events
+-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=500  -F auid!=4294967295 -k perm_mod
+-a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=500  -F auid!=4294967295 -k perm_mod
+-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=500  -F auid!=4294967295 -k perm_mod
+-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=500  -F auid!=4294967295 -k perm_mod
+-a always,exit -F arch=b64 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S  lremovexattr -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod
+-a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S  lremovexattr -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod
+#Collect Unsuccessful Unauthorized Access Attempts to Files
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate  -F exit=-EACCES -F auid>=500 -F auid!=4294967295 -k access
+-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate  -F exit=-EACCES -F auid>=500 -F auid!=4294967295 -k access
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate  -F exit=-EPERM -F auid>=500 -F auid!=4294967295 -k access
+-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate  -F exit=-EPERM -F auid>=500 -F auid!=4294967295 -k access
+#Collect mount system call by non-privileged user
+-a always,exit -F arch=b64 -S mount -F auid>=500 -F auid!=4294967295 -k mounts
+-a always,exit -F arch=b32 -S mount -F auid>=500 -F auid!=4294967295 -k mounts
+#Collect File Deletion Events by User
+-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=500  -F auid!=4294967295 -k delete
+-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=500  -F auid!=4294967295 -k delete
+#Collect Changes to System Administration Scope
+-w /etc/sudoers -p wa -k scope
+#Collect Kernel Module Loading and Unloading
+-w /sbin/insmod -p x -k modules
+-w /sbin/rmmod -p x -k modules
+-w /sbin/modprobe -p x -k modules
+```
+
+#### audit::tty
+
+* **enable**: (default: \*)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Tested on:
+* CentOS 5
+* CentOS 6
+* CentOS 7
+* Ubuntu 14.04
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+We are pushing to have acceptance testing in place, so any new feature should
+have some test to check both presence and absence of any feature
 
-## Release Notes/Contributors/Etc **Optional**
+### Contributing
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
