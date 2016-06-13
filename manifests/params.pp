@@ -39,6 +39,8 @@ class audit::params {
               $pkg_audit='auditd'
               $sysconfig=false
               $audit_file='/etc/audit/audit.rules'
+              $service_restart = '/etc/init.d/auditd restart'
+              $service_stop = '/etc/init.d/auditd stop'
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
