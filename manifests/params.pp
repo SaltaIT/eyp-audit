@@ -8,9 +8,10 @@ class audit::params {
     {
       case $::operatingsystemrelease
       {
-        /^6.*$/:
+        /^[5-7].*$/:
         {
           $pkg_audit='audit'
+          $sysconfig=true
         }
         default: { fail("Unsupported RHEL/CentOS version! - $::operatingsystemrelease")  }
       }
@@ -27,6 +28,7 @@ class audit::params {
             /^14.*$/:
             {
               $pkg_audit='auditd'
+              $sysconfig=false
             }
             default: { fail("Unsupported Ubuntu version! - $::operatingsystemrelease")  }
           }
