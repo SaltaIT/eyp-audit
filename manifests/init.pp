@@ -5,14 +5,14 @@ class audit (
               $add_default_rules=true
             ) inherits audit::params {
 
-  package { $pkg_audit:
+  package { $audit::params::pkg_audit:
     ensure => 'installed',
   }
 
   service { 'auditd':
     ensure  => 'running',
     enable  => true,
-    require => Package[$pkg_audit],
+    require => Package[$audit::params::pkg_audit],
   }
 
   concat { '/etc/audit/audit.rules':

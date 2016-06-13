@@ -13,7 +13,7 @@ class audit::params {
           $pkg_audit='audit'
           $sysconfig=true
         }
-        default: { fail("Unsupported RHEL/CentOS version! - $::operatingsystemrelease")  }
+        default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
 
     }
@@ -30,13 +30,13 @@ class audit::params {
               $pkg_audit='auditd'
               $sysconfig=false
             }
-            default: { fail("Unsupported Ubuntu version! - $::operatingsystemrelease")  }
+            default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
         }
-        'Debian': { fail("Unsupported")  }
-        default: { fail("Unsupported Debian flavour!")  }
+        'Debian': { fail('Unsupported')  }
+        default: { fail('Unsupported Debian flavour!')  }
       }
     }
-    default: { fail("Unsupported OS!")  }
+    default: { fail('Unsupported OS!')  }
   }
 }
