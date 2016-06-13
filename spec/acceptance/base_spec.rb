@@ -20,7 +20,7 @@ describe 'apache class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
-    describe file($generalconf) do
+    describe file('/etc/audit/audit.rules') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
       its(:content) { should match '-D' }
