@@ -10,11 +10,12 @@ class audit (
   }
 
   service { 'auditd':
-    ensure  => 'running',
-    enable  => true,
-    require => Package[$audit::params::pkg_audit],
-    restart => $audit::params::service_restart,
-    stop    => $audit::params::service_stop,
+    ensure    => 'running',
+    enable    => true,
+    require   => Package[$audit::params::pkg_audit],
+    restart   => $audit::params::service_restart,
+    stop      => $audit::params::service_stop,
+    hasstatus => true,
   }
 
   concat { $audit::params::audit_file:
