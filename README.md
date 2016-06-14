@@ -65,7 +65,7 @@ class { 'audit::tty': }
 #### audit
 
 * **buffers**: buffers to survive stress events (default: 320)
-* **add_default_rules**: add the following default rules (default: true)
+* **add_default_rules**: add the following default rules - it will apply b64 only if is applicable, same for /etc/sysconfig/network (default: true)
 ```
 -w /var/tmp -p x
 -w /tmp -p x
@@ -134,6 +134,7 @@ Tested on:
 * CentOS 6
 * CentOS 7
 * Ubuntu 14.04
+* SLES11SP3
 
 ## Development
 
