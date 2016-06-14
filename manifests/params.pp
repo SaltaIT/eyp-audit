@@ -2,6 +2,13 @@
 #
 class audit::params {
 
+  case $::architecture
+  {
+    'x86_64': { $arch64=true }
+    'amd64': { $arch64=true }
+    default: {$arch64=false }
+  }
+
   case $::osfamily
   {
     'redhat':
