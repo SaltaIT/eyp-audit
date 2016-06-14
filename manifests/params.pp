@@ -60,7 +60,8 @@ class audit::params {
     {
       $pkg_audit='audit'
       $sysconfig=true
-      case $::operatingsystem {
+      case $::operatingsystem
+      {
         'SLES':
         {
           case $::operatingsystemrelease
