@@ -49,6 +49,26 @@ class audit::params {
         default: { fail('Unsupported Debian flavour!')  }
       }
     }
+    'Suse':
+    {
+      $pkg_audit='audit'
+      $sysconfig=true
+      case $::operatingsystem {
+        'SLES':
+        {
+          case $::operatingsystemrelease
+          {
+            '11.3':
+            {
+              $audit_file='/etc/audit/audit.rules'
+              $service_restart = '/etc/init.d/auditd restart'
+              $service_stop = '/etc/init.d/auditd stop'
+            }
+          }
+        }
+        default: { fail("Unsupported operating system ${::operatingsystem}") }
+      }
+    }
     default: { fail('Unsupported OS!')  }
   }
 }
