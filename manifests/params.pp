@@ -71,6 +71,7 @@ class audit::params {
               $service_restart = '/etc/init.d/auditd restart'
               $service_stop = '/etc/init.d/auditd stop'
             }
+            default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }
         }
         default: { fail("Unsupported operating system ${::operatingsystem}") }
