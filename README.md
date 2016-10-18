@@ -71,6 +71,7 @@ class { 'audit::tty': }
 * **logrotate_compress**   = true,
 * **logrotate_missingok**  = true,
 * **logrotate_notifempty** = true,
+* **logrotate_frequency**  = 'weekly',
 
 ```
 -w /var/tmp -p x
