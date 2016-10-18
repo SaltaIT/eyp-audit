@@ -35,6 +35,8 @@ manages:
 
 This module requires pluginsync enabled
 
+To be able to manage logrotate files it needs **eyp-logrotate**
+
 ### Beginning with audit
 
 should work out of the box:
