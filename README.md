@@ -66,6 +66,12 @@ class { 'audit::tty': }
 
 * **buffers**: buffers to survive stress events (default: 320)
 * **add_default_rules**: add the following default rules - it will apply b64 only if is applicable, same for /etc/sysconfig/network (default: true)
+* **manage_logrotate**: add logrotate config file (default: true)
+* **logrotate_rotate**     = '4',
+* **logrotate_compress**   = true,
+* **logrotate_missingok**  = true,
+* **logrotate_notifempty** = true,
+
 ```
 -w /var/tmp -p x
 -w /tmp -p x
