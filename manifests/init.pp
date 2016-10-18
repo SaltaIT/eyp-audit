@@ -56,7 +56,7 @@ class audit (
       compress      => $logrotate_compress,
       missingok     => $logrotate_missingok,
       notifempty    => $logrotate_notifempty,
-      frequency      => $logrotate_frequency,
+      frequency     => $logrotate_frequency,
     }
   }
 }
