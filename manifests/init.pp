@@ -50,7 +50,7 @@ class audit (
   if($manage_logrotate)
   {
     logrotate::logs { 'audit':
-      ensure        => present,
+      ensure        => 'present',
       log           => [ '/var/log/audit/audit.log' ],
       rotate        => $logrotate_rotate,
       compress      => $logrotate_compress,
