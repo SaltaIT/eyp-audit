@@ -1,6 +1,6 @@
 {
   "name": "eyp-audit",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "eyp",
   "summary": "basic auditd support",
   "license": "Apache-2.0",
@@ -9,7 +9,8 @@
   "issues_url": "https://github.com/NTTCom-MS/eyp-audit/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
-    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"}
+    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"},
+    {"name":"eyp/logrotate","version_requirement":">= 0.1.26"}
   ],
   "operatingsystem_support": [
     {
