@@ -35,6 +35,8 @@ class audit::params {
     }
     'Debian':
     {
+      $pkg_audit='auditd'
+      $sysconfig=false
       case $::operatingsystem
       {
         'Ubuntu':
@@ -43,8 +45,6 @@ class audit::params {
           {
             /^14.*$/:
             {
-              $pkg_audit='auditd'
-              $sysconfig=false
               $audit_file='/etc/audit/audit.rules'
               $service_restart = '/etc/init.d/auditd restart'
               $service_stop = '/etc/init.d/auditd stop'
