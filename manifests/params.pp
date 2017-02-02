@@ -49,6 +49,12 @@ class audit::params {
               $service_restart = '/etc/init.d/auditd restart'
               $service_stop = '/etc/init.d/auditd stop'
             }
+            /^16.*$/:
+            {
+              $audit_file='/etc/audit/audit.rules'
+              $service_restart = undef
+              $service_stop = undef
+            }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
         }
