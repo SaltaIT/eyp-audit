@@ -6,7 +6,7 @@
 
 ## 0.1.8
 
-* added logrotate as a dependency
+* added **::logrotate** as a dependency
 
 ## 0.1.7
 
