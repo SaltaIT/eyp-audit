@@ -1,7 +1,7 @@
 require 'spec_helper_acceptance'
 require_relative './version.rb'
 
-describe 'apache class' do
+describe 'audit class' do
 
   context 'basic setup' do
     # Using puppet_apply as a helper

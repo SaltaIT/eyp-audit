@@ -49,6 +49,8 @@ class audit (
 
   if($manage_logrotate)
   {
+    include ::logrotate
+
     logrotate::logs { 'audit':
       ensure     => 'present',
       log        => [ '/var/log/audit/audit.log' ],
