@@ -5,8 +5,10 @@
 define audit::syscallrule (
                             $action,
                             $syscall,
-                            $keyname = $name,
-                            $fields  = {},
+                            $keyname    = $name,
+                            $fields     = [],
+                            $fields_eq  = {},
+                            $fields_neq = {},
                           ) {
   #
   concat::fragment{ "${audit::params::audit_file} action ${syscall} ${keyname} ${action}":
