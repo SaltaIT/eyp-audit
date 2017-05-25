@@ -1,0 +1,17 @@
+# Syscall rules take the general form of:
+#
+# -a action,list -S syscall -F field=value -k keyname
+#
+define audit::syscallrule (
+                            $action,
+                            $syscall,
+                            $keyname = $name,
+                            $fields  = {},
+                          ) {
+  #
+  concat::fragment{ "${audit::params::audit_file} action ${syscall} ${keyname} ${action}":
+    target  => $audit::params::audit_file,
+    order   => '11',
+    content => template("${module_name}/syscallrule.erb"),
+  }
+}

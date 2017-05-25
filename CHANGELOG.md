@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.11
+
+* rules management:
+  * audit::syscallrule
+  * audit::fsrule
+
 ## 0.1.10
 
 * added Ubuntu 16.04 support

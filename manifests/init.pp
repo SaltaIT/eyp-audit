@@ -1,5 +1,13 @@
 # == Class: audit
 #
+# audit.rules concat
+#
+# 00 header
+# 01 default rules
+#
+# 10 fsrules
+# 11 syscallrules
+#
 class audit (
               $buffers              = '320',
               $add_default_rules    = true,

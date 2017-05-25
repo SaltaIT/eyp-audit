@@ -1,0 +1,1 @@
+-a <%= @action %> -S <%= @syscall %> <% @fields.each do |field, value| %>-F <%= field %>=<%= value %><% end %> -k <%= @keyname %>
