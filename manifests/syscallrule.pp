@@ -11,7 +11,7 @@ define audit::syscallrule (
                             $fields_neq = {},
                           ) {
   #
-  concat::fragment{ "${audit::params::audit_file} action ${syscall} ${keyname} ${action}":
+  concat::fragment{ "${audit::params::audit_file} action ${name} ${syscall} ${keyname} ${action}":
     target  => $audit::params::audit_file,
     order   => '11',
     content => template("${module_name}/syscallrule.erb"),

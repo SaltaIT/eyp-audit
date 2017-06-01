@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.12
+
+* bugfix **audit::fsrule** and **audit::syscallrule**
+
 ## 0.1.11
 
 * rules management:

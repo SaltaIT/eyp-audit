@@ -21,7 +21,7 @@ define audit::fsrule(
                       $keyname = $name,
                     ) {
   #
-  concat::fragment{ "${audit::params::audit_file} fsrule ${path} ${keyname}":
+  concat::fragment{ "${audit::params::audit_file} fsrule ${name} ${path} ${keyname}":
     target  => $audit::params::audit_file,
     order   => '10',
     content => template("${module_name}/fsrule.erb"),
