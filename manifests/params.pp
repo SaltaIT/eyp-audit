@@ -6,7 +6,7 @@ class audit::params {
   {
     'x86_64': { $arch64=true }
     'amd64': { $arch64=true }
-    default: {$arch64=false }
+    default: { $arch64=false }
   }
 
   case $::osfamily
