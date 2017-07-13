@@ -8,9 +8,9 @@
   "project_page": "https://github.com/NTTCom-MS/eyp-audit",
   "issues_url": "https://github.com/NTTCom-MS/eyp-audit/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
-    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3"},
-    {"name":"eyp/logrotate","version_requirement":">= 0.1.26"}
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0 < 9.9.9"},
+    {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 9.9.9"},
+    {"name":"eyp/logrotate","version_requirement":">= 0.1.26 < 0.2.0"}
   ],
   "operatingsystem_support": [
     {
