@@ -1,0 +1,8 @@
+
+#
+# Ensure auditd Collects Information on Exporting to Media
+#
+-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=4294967295 -k export
+<% if scope.lookupvar('audit::params::arch64') -%>
+-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=4294967295 -k export
+<% end -%>

@@ -1,0 +1,11 @@
+
+#
+# Ensure auditd Collects Information on Kernel Module Loading and Unloading
+#
+-w /usr/sbin/insmod -p x -k modules
+-w /usr/sbin/rmmod -p x -k modules
+-w /usr/sbin/modprobe -p x -k modules
+-a always,exit -F arch=b32 -S init_module -S delete_module -k modules
+<% if scope.lookupvar('audit::params::arch64') -%>
+-a always,exit -F arch=b64 -S init_module -S delete_module -k modules
+<% end -%>
