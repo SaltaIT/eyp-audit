@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.14
+
+* added flag to enable logging changes of login logs
+
 ## 0.1.13
 
 * added default security rules using flags to be able to enable a subset:

@@ -9,21 +9,22 @@
 # 11 syscallrules
 #
 class audit (
-              $buffers              = '320',
-              $add_default_rules    = true,
-              $manage_logrotate     = true,
-              $logrotate_rotate     = '4',
-              $logrotate_compress   = true,
-              $logrotate_missingok  = true,
-              $logrotate_notifempty = true,
-              $logrotate_frequency  = 'weekly',
-              $log_alter_time       = false,
-              $log_dac              = false,
-              $log_netconf_changes  = false,
-              $log_file_deletions   = false,
-              $log_export_media     = false,
-              $log_kmod_load_unload = false,
-              $log_priv_commands    = false,
+              $buffers                = '320',
+              $add_default_rules      = true,
+              $manage_logrotate       = true,
+              $logrotate_rotate       = '4',
+              $logrotate_compress     = true,
+              $logrotate_missingok    = true,
+              $logrotate_notifempty   = true,
+              $logrotate_frequency    = 'weekly',
+              $log_alter_time         = false,
+              $log_dac                = false,
+              $log_netconf_changes    = false,
+              $log_file_deletions     = false,
+              $log_export_media       = false,
+              $log_kmod_load_unload   = false,
+              $log_priv_commands      = false,
+              $log_changes_login_logs = false,
             ) inherits audit::params {
 
   package { $audit::params::pkg_audit:
@@ -122,6 +123,15 @@ class audit (
       target  => $audit::params::audit_file,
       order   => '02g',
       content => template("${module_name}/rules/priv_commands.erb"),
+    }
+  }
+
+  if($log_changes_login_logs)
+  {
+    concat::fragment{ "${audit::params::audit_file} log_changes_login_logs":
+      target  => $audit::params::audit_file,
+      order   => '02h',
+      content => template("${module_name}/rules/logins.erb"),
     }
   }
 
