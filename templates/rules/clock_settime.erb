@@ -3,8 +3,9 @@
 # Record Attempts to Alter Time Through clock_settime
 #
 -a always,exit -F arch=b32 -S clock_settime -F a0=0x0 -F key=time-change
+-a always,exit -F arch=b32 -S adjtimex,settimeofday,stime -F key=time-change
 <% if scope.lookupvar('audit::params::arch64') -%>
--a always,exit -F arch=b64 -S cloca0=0x0 -F key=time-change
 -a always,exit -F arch=b64 -S clock_settime -F a0=0x0 -F key=time-change
--a always,exit -F arch=b64 -S adjtimex -S settimeofday -k audit_time_rules
+-a always,exit -F arch=b64 -S adjtimex,settimeofday -F key=time-change
 <% end -%>
+-w /etc/localtime -p wa -k time-change
