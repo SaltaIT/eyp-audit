@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.15
+
+* added Ubuntu 18.04 support
+
 ## 0.1.14
 
 * added flag to enable logging changes of login logs
