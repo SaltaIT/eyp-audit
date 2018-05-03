@@ -20,7 +20,7 @@ describe 'audit class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
-    describe file('/etc/audit/audit.rules') do
+    describe file($audit_file) do
       it { should be_file }
       its(:content) { should match '-D' }
       its(:content) { should match '-b 320' }
