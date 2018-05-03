@@ -9,9 +9,9 @@ when 'RedHat'
   $servicename     = 'auditd'
   case
   when _operatingsystemrelease >= 7
-    $audit_file = '/etc/audit/rules.d/eyp-audit.rules'
+    $audit_file    = '/etc/audit/rules.d/eyp-audit.rules'
   else
-    $audit_file = '/etc/audit/audit.rules'
+    $audit_file    = '/etc/audit/audit.rules'
   end
 
 when 'Debian'
@@ -19,9 +19,9 @@ when 'Debian'
   $servicename     = 'auditd'
   case
   when _operatingsystemrelease >= 18
-    $audit_file = '/etc/audit/rules.d/audit.rules'
+    $audit_file    = '/etc/audit/rules.d/audit.rules'
   else
-    $audit_file = '/etc/audit/audit.rules'
+    $audit_file    = '/etc/audit/audit.rules'
   end
 
 else
