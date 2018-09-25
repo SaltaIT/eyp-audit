@@ -1,4 +1,4 @@
 class { 'audit':
   add_default_rules => true,
-  buffers           => '320',
+  buffers           => '600',
 }
