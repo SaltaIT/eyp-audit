@@ -4,7 +4,7 @@
 
 * **INCOMPATIBLE CHANGE**
   - auditd.conf is now a managed file
-* added tcp_listen_port variable
+* added some relevant auditd.conf variables
 
 ## 0.1.16
 
