@@ -32,6 +32,15 @@ class audit (
     ensure => 'installed',
   }
 
+  file { '/etc/audit/auditd.conf':
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    content => template("${module_name}/auditconf.erb"),
+    require => Package[$audit::params::pkg_audit],
+  }
+
   service { 'auditd':
     ensure    => 'running',
     enable    => true,

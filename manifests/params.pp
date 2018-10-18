@@ -79,7 +79,7 @@ class audit::params {
       $sysconfig=true
 
       $audispd_package=undef
-      
+
       case $::operatingsystem
       {
         'SLES':
