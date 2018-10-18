@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.17
+
+* added tcp_listen_port variable
+
 ## 0.1.16
 
 * added SLES 12.3 support

@@ -25,6 +25,7 @@ class audit (
               $log_kmod_load_unload   = false,
               $log_priv_commands      = false,
               $log_changes_login_logs = false,
+              $tcp_listen_port        = undef,
             ) inherits audit::params {
 
   package { $audit::params::pkg_audit:
