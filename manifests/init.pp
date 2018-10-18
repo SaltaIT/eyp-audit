@@ -41,7 +41,7 @@ class audit (
       owner   => 'root',
       group   => 'root',
       mode    => '0640',
-      content => template("${module_name}/auditconf.erb"),
+      content => template("${module_name}/auditdconf.erb"),
       require => Package[$audit::params::pkg_audit],
     }
   }
