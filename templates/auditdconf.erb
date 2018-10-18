@@ -25,7 +25,7 @@ admin_space_left_action = SUSPEND
 disk_full_action = SUSPEND
 disk_error_action = SUSPEND
 use_libwrap = yes
-<% defined?(@tcp_listen_port) -%>
+<% if defined?(@tcp_listen_port) -%>
 tcp_listen_port = <%= @tcp_listen_port %>
 <% end -%>
 tcp_listen_queue = 5
