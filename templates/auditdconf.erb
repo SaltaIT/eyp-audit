@@ -6,7 +6,7 @@
 
 log_file = /var/log/audit/audit.log
 log_group = root
-log_format = RAW
+log_format = <%= @log_format %>
 flush = <%= @flush %>
 freq = 50
 max_log_file = 8
