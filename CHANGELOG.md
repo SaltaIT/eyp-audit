@@ -1,7 +1,9 @@
 # CHANGELOG
 
-## 0.1.17
+## 0.2.0
 
+* **INCOMPATIBLE CHANGE**
+  - auditd.conf is now a managed file
 * added tcp_listen_port variable
 
 ## 0.1.16
