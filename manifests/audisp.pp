@@ -5,9 +5,11 @@ class audit::audisp (
                       $manage_docker_service = true,
                       $service_ensure        = 'running',
                       $service_enable        = true,
-                    ) inherits audit::params
-{
-
+                      $remote_server         = undef,
+                      $remote_port           = '60',
+                      $queue_file            = '/var/spool/audit/remote.log',
+                      $queue_depth           = '2048',
+                    ) inherits audit::params {
   include ::audit
 
   Class['::audit'] ->
