@@ -29,6 +29,7 @@ class audit (
               $tcp_listen_port        = undef,
               $flush                  = $audit::params::flush_default,
               $manage_auditconf       = true,
+              $auditd_specifics       = true,
             ) inherits audit::params {
 
   package { $audit::params::pkg_audit:

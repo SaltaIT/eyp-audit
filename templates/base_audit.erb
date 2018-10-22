@@ -1,8 +1,10 @@
 #
 # puppet managed file
 #
-#reset rules
+<% if @auditd_specifics -%>
+# reset rules
 -D
 # Increase the buffers to survive stress events.
 # Make this bigger for busy systems
 -b <%= @buffers %>
+<% end -%>

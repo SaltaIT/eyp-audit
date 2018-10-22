@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.1
+
+* added flag to remove auditd specific options
+
 ## 0.2.0
 
 * **INCOMPATIBLE CHANGE**
