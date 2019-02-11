@@ -84,6 +84,7 @@ class audit::params {
       $sysconfig=true
 
       $audispd_package=undef
+      $flush_default = 'INCREMENTAL'
 
       case $::operatingsystem
       {
@@ -102,6 +103,7 @@ class audit::params {
               $audit_file='/etc/audit/audit.rules'
               $service_restart = undef
               $service_stop = undef
+              $flush_default =
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }

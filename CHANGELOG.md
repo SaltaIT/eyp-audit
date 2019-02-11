@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.3
+
+* SuSE bugfix: added default flush
+
 ## 0.2.2
 
 * added SLES 12.4 support
