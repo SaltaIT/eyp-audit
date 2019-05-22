@@ -25,7 +25,7 @@ class audit::params {
           $audispd_package=undef
           $flush_default = 'INCREMENTAL'
         }
-        /^7.*$/:
+        /^[78].*$/:
         {
           $audit_file='/etc/audit/rules.d/eyp-audit.rules'
           $service_restart = '/usr/libexec/initscripts/legacy-actions/auditd/restart'

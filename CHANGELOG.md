@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.4
+
+* Added support for RHEL 8
+
 ## 0.2.3
 
 * SuSE bugfix: added default flush
