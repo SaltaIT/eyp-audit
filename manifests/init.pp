@@ -30,10 +30,20 @@ class audit (
               $flush                  = $audit::params::flush_default,
               $manage_auditconf       = true,
               $auditd_specifics       = true,
+              $log_dir                = '/var/log/audit',
             ) inherits audit::params {
 
   package { $audit::params::pkg_audit:
     ensure => 'installed',
+  }
+
+  file { $log_dir:
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0750',
+    require => Package[$audit::params::pkg_audit],
+    before  => File['/etc/audit/auditd.conf']
   }
 
   if($manage_auditconf)

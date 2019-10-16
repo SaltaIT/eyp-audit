@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.5
+
+* Added auditd's log directory under puppet management
+
 ## 0.2.4
 
 * Added support for RHEL 8
