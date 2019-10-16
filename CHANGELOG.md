@@ -6,7 +6,7 @@
 
 ## 0.2.4
 
-* Added support for RHEL 8
+* Added support for **RHEL 8**
 
 ## 0.2.3
 
@@ -14,7 +14,7 @@
 
 ## 0.2.2
 
-* added SLES 12.4 support
+* added **SLES 12.4** support
 
 ## 0.2.1
 
@@ -28,11 +28,11 @@
 
 ## 0.1.16
 
-* added SLES 12.3 support
+* added **SLES 12.3** support
 
 ## 0.1.15
 
-* added Ubuntu 18.04 support
+* added **Ubuntu 18.04** support
 
 ## 0.1.14
 
@@ -61,7 +61,7 @@
 
 ## 0.1.10
 
-* added Ubuntu 16.04 support
+* added **Ubuntu 16.04** support
 
 ## 0.1.9
 
