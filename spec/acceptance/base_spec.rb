@@ -29,6 +29,10 @@ describe 'audit class' do
       its(:content) { should match '-w /etc/localtime -p wa -k time-change' }
     end
 
+    describe file('/var/log/audit') do
+      it { should be_directory }
+    end
+
   end
 
 end
