@@ -43,7 +43,7 @@ class audit (
     group   => 'root',
     mode    => '0750',
     require => Package[$audit::params::pkg_audit],
-    before  => File['/etc/audit/auditd.conf']
+    before  => File['/etc/audit/auditd.conf'],
   }
 
   if($manage_auditconf)
