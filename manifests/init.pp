@@ -169,7 +169,7 @@ class audit (
 
     logrotate::logs { 'audit':
       ensure     => 'present',
-      log        => [ '/var/log/audit/audit.log' ],
+      log        => [ "${log_dir}/audit.log" ],
       rotate     => $logrotate_rotate,
       compress   => $logrotate_compress,
       missingok  => $logrotate_missingok,
