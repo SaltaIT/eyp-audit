@@ -31,6 +31,8 @@ class audit (
               $manage_auditconf       = true,
               $auditd_specifics       = true,
               $log_dir                = '/var/log/audit',
+              $disp_qos               = 'lossy',
+              $log_group              = 'root',
             ) inherits audit::params {
 
   package { $audit::params::pkg_audit:

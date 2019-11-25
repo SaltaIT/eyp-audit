@@ -5,14 +5,14 @@
 #
 
 log_file = <%= @log_dir %>/audit.log
-log_group = root
+log_group = <%= @log_group %>
 log_format = <%= @log_format %>
 flush = <%= @flush %>
 freq = 50
 max_log_file = 8
 num_logs = 5
 priority_boost = 4
-disp_qos = lossy
+disp_qos = <%= @disp_qos %>
 dispatcher = /sbin/audispd
 name_format = NONE
 ##name = mydomain

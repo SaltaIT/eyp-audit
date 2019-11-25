@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.6
+
+* added variables:
+  - disp_qos
+  - log_group
+
 ## 0.2.5
 
 * Added auditd's log directory under puppet management
