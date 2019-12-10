@@ -11,7 +11,7 @@ define audit::customfile(
     fail('Unable to set custom rules using audit::customfile on this OS')
   }
 
-  file { '${audit::params::auditd_dir}/${filename}':
+  file { "${audit::params::auditd_dir}/${filename}":
     ensure  => $ensure,
     owner   => 'root',
     group   => 'root',
