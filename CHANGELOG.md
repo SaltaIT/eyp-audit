@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.8
+
+* added content variable for **audit::customfile**
+
 ## 0.2.7
 
 * added **audit::customfile** for custom rulesets

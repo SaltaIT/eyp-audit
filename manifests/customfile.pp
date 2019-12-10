@@ -1,5 +1,6 @@
 define audit::customfile(
-                          $source,
+                          $source = undef,
+                          $content = undef,
                           $filename = $name,
                           $ensure   = 'present',
                         ) {
@@ -17,5 +18,7 @@ define audit::customfile(
     mode    => '0640',
     require => Package[$audit::params::pkg_audit],
     notify  => Service['auditd'],
+    source  => $source,
+    content => $content,
   }
 }
