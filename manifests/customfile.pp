@@ -6,7 +6,7 @@ define audit::customfile(
                         ) {
   include ::audit
 
-  if(!defined($audit::params::auditd_dir))
+  if($audit::params::auditd_dir==undef)
   {
     fail('Unable to set custom rules using audit::customfile on this OS')
   }
