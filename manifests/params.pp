@@ -20,6 +20,7 @@ class audit::params {
         /^6.*$/:
         {
           $audit_file='/etc/audit/audit.rules'
+          $auditd_dir=undef
           $service_restart = '/etc/init.d/auditd restart'
           $service_stop = '/etc/init.d/auditd stop'
           $audispd_package=undef
@@ -28,6 +29,7 @@ class audit::params {
         /^[78].*$/:
         {
           $audit_file='/etc/audit/rules.d/eyp-audit.rules'
+          $auditd_dir='/etc/audit/rules.d'
           $service_restart = '/usr/libexec/initscripts/legacy-actions/auditd/restart'
           $service_stop = '/usr/libexec/initscripts/legacy-actions/auditd/stop'
           $audispd_package='audispd-plugins'
@@ -53,6 +55,7 @@ class audit::params {
             /^14.*$/:
             {
               $audit_file='/etc/audit/audit.rules'
+              $auditd_dir=undef
               $service_restart = '/etc/init.d/auditd restart'
               $service_stop = '/etc/init.d/auditd stop'
               $flush_default = 'INCREMENTAL'
@@ -60,6 +63,7 @@ class audit::params {
             /^16.*$/:
             {
               $audit_file='/etc/audit/audit.rules'
+              $auditd_dir=undef
               $service_restart = undef
               $service_stop = undef
               $flush_default = 'INCREMENTAL'
@@ -67,6 +71,7 @@ class audit::params {
             /^18.*$/:
             {
               $audit_file='/etc/audit/rules.d/audit.rules'
+              $auditd_dir='/etc/audit/rules.d'
               $service_restart = undef
               $service_stop = undef
               $flush_default = 'INCREMENTAL_ASYNC'
@@ -95,12 +100,14 @@ class audit::params {
             '11.3':
             {
               $audit_file='/etc/audit/audit.rules'
+              $auditd_dir=undef
               $service_restart = '/etc/init.d/auditd restart'
               $service_stop = '/etc/init.d/auditd stop'
             }
             /^12.[34]/:
             {
               $audit_file='/etc/audit/audit.rules'
+              $auditd_dir=undef
               $service_restart = undef
               $service_stop = undef
             }
