@@ -4,9 +4,9 @@
   "author": "eyp",
   "summary": "auditd management",
   "license": "Apache-2.0",
-  "source": "https://github.com/NTTCom-MS/eyp-audit",
-  "project_page": "https://github.com/NTTCom-MS/eyp-audit",
-  "issues_url": "https://github.com/NTTCom-MS/eyp-audit/issues",
+  "source": "https://github.com/SaltaIT/eyp-audit",
+  "project_page": "https://github.com/SaltaIT/eyp-audit",
+  "issues_url": "https://github.com/SaltaIT/eyp-audit/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0 < 9.9.9"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 9.9.9"},
